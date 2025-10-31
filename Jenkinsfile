@@ -16,8 +16,8 @@ pipeline {
         stage('Push Docker Image to Docker Hub') {
             steps {
                 echo "Pushing Docker Image to Docker Hub"
-                bat "docker tag random-history-fact:v1 krishneswari08/random-history-fact:v1"
-                bat "docker push krishneswari08/random-history-fact:v1"
+                bat "docker tag random-history-fact:v1 srujanatangudu4/random-history-fact:v1"
+                bat "docker push srujanatangudu4/random-history-fact:v1"
             }
         }
         stage('Deploy to Kubernetes') {
@@ -37,4 +37,5 @@ pipeline {
         }
     }
 }
+
 
