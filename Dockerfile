@@ -1,6 +1,17 @@
-FROM python:3.9-slim-buster
+# Use Python base image
+FROM python:3.12-slim
+
+# Set working directory
 WORKDIR /app
-COPY . /app
+
+# Copy files
+COPY . .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose port (optional, for Flask)
 EXPOSE 5000
-CMD ["python3", "app.py"]
+
+# Run the app
+CMD ["python", "app.py"]
