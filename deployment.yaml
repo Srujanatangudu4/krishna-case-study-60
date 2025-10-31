@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: random-history-fact-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: random-history-fact
+  template:
+    metadata:
+      labels:
+        app: random-history-fact
+    spec:
+      containers:
+        - name: random-history-fact
+          image: krishneswari08/random-history-fact:v1
+          ports:
+            - containerPort: 5000

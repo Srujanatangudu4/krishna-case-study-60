@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Historical Fact</title>
+    <style>
+      body {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        background: #f7f9fc;
+        margin-top: 100px;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      a {
+        text-decoration: none;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🕰️ Random Historical Fact</h1>
+    <form action="/fact" method="post">
+      <p>Optional: Pick a date</p>
+      <input type="date" name="date" />
+      <br /><br />
+      <button type="submit">Show Fact</button>
+    </form>
+  </body>
+</html>

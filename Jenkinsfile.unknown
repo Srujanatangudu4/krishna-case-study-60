@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker Image for Random Historical Fact App"
+                bat "docker build -t random-history-fact:v1 ."
+            }
+        }
+        stage('Docker Login') {
+            steps {
+                echo "Logging into Docker Hub"
+                bat 'docker login -u krishneswari08 -p Krishna@5399'
+            }
+        }
+        stage('Push Docker Image to Docker Hub') {
+            steps {
+                echo "Pushing Docker Image to Docker Hub"
+                bat "docker tag random-history-fact:v1 krishneswari08/random-history-fact:v1"
+                bat "docker push krishneswari08/random-history-fact:v1"
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                echo "Deploying Flask App to Kubernetes Cluster"
+                bat 'kubectl apply -f deployment.yaml --validate=false'
+                bat 'kubectl apply -f service.yaml'
+            }
+        }
+    }
+    post {
+        success {
+            echo '✅ Deployment Successful!'
+        }
+        failure {
+            echo '❌ Deployment Failed!'
+        }
+    }
+}
