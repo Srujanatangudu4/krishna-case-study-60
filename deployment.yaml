@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: random-history-fact
-          image: krishneswari08/random-history-fact:v1
+          image: srujanatangudu4/random-history-fact:v1
           ports:
             - containerPort: 5000
+
